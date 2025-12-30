@@ -1,41 +1,32 @@
 const slider = document.getElementById('lista-tenisica-index');
 
 if (slider) {
+    const cardWidth = 265; // širina kartice + gap
+    const intervalTime = 3000;
     let scrollAmount = 0;
-    const cardWidth = 265; // širina tenisice + gap (250 + 15)
-    const interval = 3000; // svake 3 sekunde
+    let autoScroll;
 
-    setInterval(() => {
-        scrollAmount += cardWidth;
+    function startScroll() {
+        autoScroll = setInterval(() => {
+            scrollAmount += cardWidth;
 
-        if (scrollAmount >= slider.scrollWidth - slider.clientWidth) {
-            scrollAmount = 0; // vrati na početak
-        }
+            if (scrollAmount >= slider.scrollWidth - slider.clientWidth) {
+                scrollAmount = 0;
+            }
 
-        slider.scrollTo({
-            left: scrollAmount,
-            behavior: 'smooth'
-        });
-    }, interval);
+            slider.scrollTo({
+                left: scrollAmount,
+                behavior: 'smooth'
+            });
+        }, intervalTime);
+    }
+
+    function stopScroll() {     //zaustavlja scroll kod hoveranja
+        clearInterval(autoScroll);
+    }
+
+    slider.addEventListener('mouseenter', stopScroll);
+    slider.addEventListener('mouseleave', startScroll);
+
+    startScroll(); // pokreće scroll odmah
 }
-
-let autoScroll;
-
-function startScroll() {
-    autoScroll = setInterval(() => {
-        scrollAmount += cardWidth;
-        if (scrollAmount >= slider.scrollWidth - slider.clientWidth) {
-            scrollAmount = 0;
-        }
-        slider.scrollTo({ left: scrollAmount, behavior: 'smooth' });
-    }, interval);
-}
-
-function stopScroll() {
-    clearInterval(autoScroll);
-}
-
-slider.addEventListener('mouseenter', stopScroll);
-slider.addEventListener('mouseleave', startScroll);
-
-startScroll();
