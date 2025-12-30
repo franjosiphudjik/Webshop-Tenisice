@@ -1,6 +1,7 @@
 
 
-const listaTenisica = document.getElementById('lista-tenisica');
+const listaTenisica = document.getElementById('lista-tenisica') || document.getElementById('lista-tenisica-index');
+const jeIndexStranica = !!document.getElementById('lista-tenisica-index');
 const formaDodaj = document.getElementById('forma-dodaj-tenisicu');
 const notifikacija = document.getElementById('notifikacija');
 
@@ -23,7 +24,7 @@ function prikaziTenisice() {
             }
             data.forEach(t => {
                 const div = document.createElement('div');
-                div.classList.add('tenisica');
+                div.classList.add(jeIndexStranica ? 'tenisica-index' : 'tenisica');
                 div.innerHTML = `
                     <h3>${t.naziv}</h3>
                     <p>Brend: ${t.brend}</p>
