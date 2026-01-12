@@ -236,7 +236,7 @@ header h4 {
 
 .intro {
     position: fixed;
-    z-index: 1;
+    z-index: 9999;
     left: 0;
     top: 0;
     width: 100%;
@@ -261,7 +261,7 @@ header h4 {
     position: relative;
     display: inline-block;
     bottom: -20px;
-    opacity: 0%; /* tekst s intro screena */
+    opacity: 0; /* tekst s intro screena */
 }
 
 
@@ -288,14 +288,22 @@ header h4 {
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0px;
-    background-color: #f5f5f5;
+    background-color: whitesmoke;
     color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 /* Naslovi */
 h1, h2 {
     text-align: center;
-    color: #2c3e50;
+    color: #d9ecff;
+}
+
+h3 {
+    text-align: center;
+    color: black
 }
 
 /* Lista tenisica */
@@ -323,6 +331,7 @@ h1, h2 {
 }
 
 #lista-tenisica-index {
+    background-color: #ccc;
     display: flex;
     flex-wrap: nowrap;        /* zabranjuje prijelaz u novi red */
     overflow-x: auto;         /* omogućuje horizontalni scroll */
@@ -340,6 +349,7 @@ h1, h2 {
     padding: 15px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     scroll-snap-align: start;
+    color: #333;
 
 }
 
@@ -371,13 +381,13 @@ h1, h2 {
 }
 
 .tenisica button:first-of-type {
-    background-color: #e74c3c;
+    background-color: #000000;
     color: white;
     margin-right: 5px;
 }
 
 .tenisica button:first-of-type:hover {
-    background-color: #c0392b;
+    background-color: #000000;
 }
 
 .tenisica button:last-of-type {
@@ -400,13 +410,13 @@ h1, h2 {
 }
 
 .tenisica-index button:first-of-type {
-    background-color: #e74c3c;
+    background-color: #2c2c2c;
     color: white;
     margin-right: 5px;
 }
 
 .tenisica-index button:first-of-type:hover {
-    background-color: #c0392b;
+    background-color: #ac9592;
 }
 
 .tenisica-index button:last-of-type {
@@ -496,13 +506,122 @@ form button:hover {
     }
 }
 
+/* Wrapper za sortiranje i filter */
+.kontrole {
+    max-width: 900px;
+    margin: 20px auto 40px;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: flex-end;
+}
+
+/* Pojedinačna kontrola */
+.kontrola {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 200px;
+}
+
+/* Naslov */
+.kontrola h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+/* Label */
+.kontrola label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #555;
+}
+
+/* Select */
+.kontrola select {
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 0.95rem;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    transition: border 0.2s, box-shadow 0.2s;
+}
+
+.kontrola select:hover {
+    border-color: #999;
+}
+
+.kontrola select:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 2px rgba(52,152,219,0.2);
+}
+
+/* Notifikacija */
+#notifikacija {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+    display: none;
+}
+
+#notifikacija.vidljivo {
+    display: block;
+}
+
+@media (max-width: 600px) {
+    .kontrole {
+        flex-direction: column;
+    }
+
+    .kontrola {
+        width: 100%;
+    }
+}
+
+.hero {
+    position: relative;
+    min-height: 100vh;
+    background-image: url("slike/pozadina.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #fff;
+}
+
+/* Tamni overlay */
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55); /* kontrola opacity */
+    z-index: 1;
+}
+
+/* Tekst iznad overlaya */
+.hero > * {
+    position: relative;
+    z-index: 2;
+}
+
+
 /* FOOTER */
 .footer {
     background-color: #111;
     color: #eee;
     padding: 20px 10px;
     text-align: center;
-    margin-top: 50px;
+    margin-top: auto;
 }
 
 .footer-content p {
@@ -519,4 +638,92 @@ form button:hover {
     .footer-content p {
         font-size: 0.85rem;
     }
+}
+
+/* CART STYLES */
+#kosarica {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+#kosarica > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 10px;
+}
+
+#kosarica > div:last-child {
+    border-bottom: none;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 10px;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.item-details {
+    flex: 1;
+}
+
+.remove-btn {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+}
+
+.empty-cart {
+    text-align: center;
+    font-style: italic;
+    color: #7f8c8d;
+    padding: 20px;
+}
+
+#ukupno {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+#ukupno + button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#ukupno + button:hover {
+    background-color: #2980b9;
 }
