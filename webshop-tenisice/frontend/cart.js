@@ -38,7 +38,7 @@ function prikaziKosaricu() {
     container.innerHTML = '';
 
     if (kosarica.length === 0) {
-        container.innerHTML = '<p>Košarica je prazna.</p>';
+        container.innerHTML = '<p class="empty-cart">Košarica je prazna.</p>';
         ukupnoEl.textContent = '';
         return;
     }
@@ -50,12 +50,14 @@ function prikaziKosaricu() {
         ukupno += ukupnoProizvod;
 
         container.innerHTML += `
-            <div>
-                <strong>${p.naziv}</strong><br>
-                Cijena: ${p.cijena} €<br>
-                Količina: ${p.kolicina}<br>
-                <strong>Ukupno: ${ukupnoProizvod.toFixed(2)} €</strong><br>
-                <button onclick="ukloniIzKosarice(${p.id})">Ukloni</button>
+            <div class="cart-item">
+                <div class="item-details">
+                    <strong>${p.naziv}</strong><br>
+                    Cijena: ${p.cijena} €<br>
+                    Količina: ${p.kolicina}<br>
+                    <strong>Ukupno: ${ukupnoProizvod.toFixed(2)} €</strong>
+                </div>
+                <button class="remove-btn" onclick="ukloniIzKosarice(${p.id})">Ukloni</button>
             </div>
             <hr>
         `;

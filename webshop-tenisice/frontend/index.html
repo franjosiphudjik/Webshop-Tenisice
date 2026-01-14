@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
     <nav class="navbar">
         <div class="nav-logo">Webshop Tenisice</div>
 
@@ -34,30 +33,43 @@
     
     <script src="intro.js"></script>
 
+<section class="hero">
+    
     <h1></h1>
 
     <!-- <h1>Webshop Tenisice</h1>-->
+    
 
+
+
+
+<div class="kontrole">
     <div id="notifikacija" class="skriveno"></div>
 
-    <h3>Sortiranje</h3>
-    <select id="sortiranje">
-        <option value="">Sortiraj</option>
-        <option value="asc">Cijena ↑</option>
-        <option value="desc">Cijena ↓</option>
-    </select>
+    <div class="kontrola">
+        <h3>Sortiranje</h3>
+        <select id="sortiranje">
+            <option value="">Sortiraj</option>
+            <option value="asc">Cijena ↑</option>
+            <option value="desc">Cijena ↓</option>
+        </select>
+    </div>
 
-    <label for="filter-brend">Filtriraj po brendu:</label>
-    <select id="filter-brend">
-        <option value="">Svi brendovi</option>
-    </select>
-
+    <div class="kontrola">
+        <label for="filter-brend">Filtriraj po brendu</label>
+        <select id="filter-brend">
+            <option value="">Svi brendovi</option>
+        </select>
+    </div>
+</div>
 
     <div id="lista-tenisica-index"></div>
 
         <script src="scroller.js"></script>
 
 <br><br>
+
+
     <h2>Dodaj / Uredi tenisicu</h2>
     <form id="forma-dodaj-tenisicu">
         <input type="text" id="naziv" placeholder="Naziv" required>
@@ -69,6 +81,9 @@
 
     <script src="app.js"></script>
     <script src="cart.js"></script>
+
+</section>
+
 
     <footer class="footer">
     <div class="footer-content">
